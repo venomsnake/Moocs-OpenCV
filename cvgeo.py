@@ -1,7 +1,14 @@
 #Geometry shapes on images/outlines 
 import cv2 as cv
+import numpy as np
 
-img = cv.imread('test.png',-1)
+#img = cv.imread('test.png',-1)
+
+#Image using numpy
+#height width 
+
+img = np.zeros([512, 512, 3], np.uint8)
+
 
 #draw line with lines method
 #(image, starting pt ending pt, color, thickness)
