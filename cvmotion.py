@@ -16,9 +16,19 @@ while cap.isOpened():
 	dialted = cv.dilate(thresh, None, iterations=3)
 	contours, _ = cv.findContours(dialted, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
-	cv.drawContours(frame1, contours, -1, (0, 255, 0), 2)
+	for contour in contours:
+		(x, y, w, h) = cv.boundingRect(contour)
+
+		if cv.contourArea(contour) < 700:
+			continue
+		cv.rectangle(frame1, (x, y), (x+w, y+h), (0, 255, 0), 2)
+		cv.putText(frame1,"Status :{}".format ('Motion'), (10, 20), cv.FONT_HERSHEY_SIMPLEX,
+			1, (0, 0 , 255), 3)
+	#cv.drawContours(frame1, contours, -1, (0, 255, 0), 2)
 
 	cv.imshow("Inter", frame1)
+	frame1 = frame2
+	ret, frame2 = cap.read()
 
 	if cv.waitKey(40) == 27:
 		break
