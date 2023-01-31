@@ -36,15 +36,17 @@ while True:
 	l_b = np.array([l_h, l_s, l_v])
 	u_b = np.array([u_h, u_s, u_v])
 
-	mask = cv.inRange(hsv, l_b, u_b)
+	mask = cv.inRange(hsv, l_b, u_b) #covers/hides other color
+	
+	res = cv.bitwise_and(frame, frame, mask=mask)
 
 	cv.imshow("frame", frame)
 	cv.imshow("mask", mask)
-	cv.imshow("frame", frame)
+	cv.imshow("res", res)
 
 	key = cv.waitKey(1)
 	if key == 27:
 		break
-		
+
 cap.release()
 cv.destroyAllWindows()
