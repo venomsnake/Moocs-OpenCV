@@ -17,7 +17,7 @@ gaussianb = cv.GaussianBlur(img, (5,5), 0) #removes high frequency noise
 
 median = cv.medianBlur(img, 5) #kernel size as odd
 
-bilateral_filter = cv.bilateralFilter(img, 9, 75, 75)
+bilateral_filter = cv.bilateralFilter(img, 9, 75, 75) #keeps the sharp edges
 
 titles = ['image', 'dst', 'blur', 'Gaussian', 'salt&paper', 'bilateralFilter']
 images=[img, dst, blur, gaussianb, median, bilateral_filter]
