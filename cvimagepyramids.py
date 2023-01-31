@@ -24,7 +24,7 @@ for i in range(6):
 	gp.append(layer)
 	#cv.imshow(str(i), layer)
 
-'''laplcian'''
+'''laplacian'''
 layer = gp[5]
 cv.imshow("upper level ",layer)
 lp = [layer]
